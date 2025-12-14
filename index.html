@@ -31,14 +31,11 @@
       --border: #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #182447 0, #050814 55%);
       color: var(--text);
       min-height: 100vh;
@@ -83,8 +80,7 @@
       gap: 12px;
     }
 
-    .left-column,
-    .right-column {
+    .left-column, .right-column {
       flex: 1 1 280px;
       min-width: 0;
     }
@@ -148,9 +144,7 @@
       border: 1px solid var(--border);
     }
 
-    .toggle-label {
-      font-size: 0.78rem;
-    }
+    .toggle-label { font-size: 0.78rem; }
 
     .switch {
       position: relative;
@@ -173,17 +167,10 @@
       transition: transform 0.18s ease;
     }
 
-    .switch.on {
-      background: #7cb342;
-    }
+    .switch.on { background: #7cb342; }
+    .switch.on .switch-thumb { transform: translateX(14px); }
 
-    .switch.on .switch-thumb {
-      transform: translateX(14px);
-    }
-
-    select,
-    input[type="number"],
-    input[type="text"] {
+    select, input[type="number"], input[type="text"] {
       background: #070a18;
       border-radius: 999px;
       border: 1px solid var(--border);
@@ -194,9 +181,7 @@
       min-width: 0;
     }
 
-    select:focus,
-    input[type="number"]:focus,
-    input[type="text"]:focus {
+    select:focus, input[type="number"]:focus, input[type="text"]:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 1px rgba(255, 179, 0, 0.6);
     }
@@ -244,21 +229,10 @@
       min-height: 260px;
     }
 
-    svg {
-      max-width: 100%;
-      height: auto;
-    }
+    svg { max-width: 100%; height: auto; }
 
-    .prompt-text {
-      font-size: 0.9rem;
-      margin: 8px 0 2px;
-    }
-
-    .given-text {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
+    .prompt-text { font-size: 0.9rem; margin: 8px 0 2px; }
+    .given-text { font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
 
     .inputs-row {
       display: flex;
@@ -278,20 +252,10 @@
       border-radius: 999px;
     }
 
-    .angle-input span {
-      font-weight: 600;
-      min-width: 14px;
-    }
+    .angle-input span { font-weight: 600; min-width: 14px; }
+    .angle-input input { width: 64px; text-align: center; }
 
-    .angle-input input {
-      width: 64px;
-      text-align: center;
-    }
-
-    .deg-symbol {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
+    .deg-symbol { font-size: 0.8rem; color: var(--muted); }
 
     .buttons-row {
       display: flex;
@@ -300,9 +264,7 @@
       margin-top: 6px;
     }
 
-    .feedback-card {
-      min-height: 120px;
-    }
+    .feedback-card { min-height: 120px; }
 
     .feedback-status {
       font-size: 0.95rem;
@@ -313,15 +275,9 @@
       gap: 6px;
     }
 
-    .feedback-status span.icon {
-      font-size: 1.2rem;
-    }
+    .feedback-status span.icon { font-size: 1.2rem; }
 
-    .feedback-message {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
+    .feedback-message { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
 
     .steps {
       font-size: 0.8rem;
@@ -333,9 +289,7 @@
       overflow-y: auto;
     }
 
-    .steps p {
-      margin: 3px 0;
-    }
+    .steps p { margin: 3px 0; }
 
     .score-grid {
       display: grid;
@@ -351,14 +305,8 @@
       text-align: center;
     }
 
-    .score-label {
-      color: var(--muted);
-      margin-bottom: 2px;
-    }
-
-    .score-value {
-      font-weight: 600;
-    }
+    .score-label { color: var(--muted); margin-bottom: 2px; }
+    .score-value { font-weight: 600; }
 
     .summary-toggle {
       margin-top: 6px;
@@ -378,18 +326,14 @@
       display: none;
     }
 
-    .summary-panel.visible {
-      display: block;
-    }
+    .summary-panel.visible { display: block; }
 
     .summary-item {
       padding: 4px 0;
       border-bottom: 1px dashed var(--border);
     }
 
-    .summary-item:last-child {
-      border-bottom: none;
-    }
+    .summary-item:last-child { border-bottom: none; }
 
     .timer-display {
       font-size: 0.8rem;
@@ -397,9 +341,7 @@
       font-weight: 600;
     }
 
-    .timer-display.danger {
-      color: var(--error);
-    }
+    .timer-display.danger { color: var(--error); }
 
     .worksheet-controls {
       display: flex;
@@ -410,9 +352,7 @@
       font-size: 0.85rem;
     }
 
-    .worksheet-list {
-      font-size: 0.86rem;
-    }
+    .worksheet-list { font-size: 0.86rem; }
 
     .worksheet-item {
       border-radius: 10px;
@@ -443,10 +383,7 @@
       margin-bottom: 4px;
     }
 
-    .worksheet-diagram svg {
-      max-width: 220px;
-      height: auto;
-    }
+    .worksheet-diagram svg { max-width: 220px; height: auto; }
 
     .worksheet-inputs {
       display: flex;
@@ -463,9 +400,7 @@
       display: none;
     }
 
-    .worksheet-answers.visible {
-      display: block;
-    }
+    .worksheet-answers.visible { display: block; }
 
     footer {
       margin-top: 10px;
@@ -475,9 +410,7 @@
     }
 
     @media (max-width: 720px) {
-      .score-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .score-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
   </style>
 </head>
@@ -485,32 +418,40 @@
   <div class="app">
     <h1>Angles on a Straight Line – Missing Angle A</h1>
     <div class="subtitle">
-      A straight angle is 180°. Use this to find the missing angle A when a straight angle is split into 2, 3 or 4 parts.
+      A straight angle is 180°. Use this to find the missing angle A.
+      Choose Basic for classic “add and subtract”, or Advanced for equation-style problems.
     </div>
 
     <div class="shell" aria-label="Angle game">
       <div class="card-header" style="margin-bottom:10px;">
         <div class="tabs" role="tablist">
-          <button class="tab active" id="tab-game" role="tab" aria-selected="true">
-            Game mode
-          </button>
-          <button class="tab" id="tab-worksheet" role="tab" aria-selected="false">
-            Worksheet mode
-          </button>
+          <button class="tab active" id="tab-game" role="tab" aria-selected="true">Game mode</button>
+          <button class="tab" id="tab-worksheet" role="tab" aria-selected="false">Worksheet mode</button>
         </div>
+
         <div class="controls-row">
+          <div class="toggle-group" id="mode-toggle-group" title="Problem type">
+            <span class="toggle-label">Mode</span>
+            <select id="mode-select" aria-label="Mode select">
+              <option value="basic" selected>Basic</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+
           <div class="toggle-group" id="sound-toggle-group">
             <span class="toggle-label">Sound</span>
             <div class="switch on" id="sound-switch" aria-label="Sound toggle">
               <div class="switch-thumb"></div>
             </div>
           </div>
+
           <div class="toggle-group" id="contrast-toggle-group">
             <span class="toggle-label">High contrast</span>
             <div class="switch" id="contrast-switch" aria-label="Contrast toggle">
               <div class="switch-thumb"></div>
             </div>
           </div>
+
           <div class="toggle-group" id="timer-toggle-group">
             <span class="toggle-label">Timer</span>
             <div class="switch" id="timer-switch" aria-label="Timer toggle">
@@ -533,11 +474,10 @@
           <div class="left-column">
             <div class="card" aria-label="Problem area">
               <h2>Current question</h2>
-              <div class="diagram-wrapper" id="diagram-container" aria-label="Angle diagram">
-                <!-- SVG injected here -->
-              </div>
+              <div class="diagram-wrapper" id="diagram-container" aria-label="Angle diagram"></div>
               <div class="prompt-text" id="prompt-text"></div>
               <div class="given-text" id="given-text"></div>
+
               <div class="inputs-row">
                 <div class="angle-input">
                   <span>A</span>
@@ -551,19 +491,12 @@
                   <span class="deg-symbol">°</span>
                 </div>
               </div>
+
               <div class="buttons-row">
-                <button id="submit-btn">
-                  Submit
-                </button>
-                <button id="next-btn" class="secondary">
-                  Next
-                </button>
-                <button id="clear-btn" class="secondary small">
-                  Clear (Esc)
-                </button>
-                <button id="show-steps-btn" class="secondary small" disabled>
-                  Show steps
-                </button>
+                <button id="submit-btn">Submit</button>
+                <button id="next-btn" class="secondary">Next</button>
+                <button id="clear-btn" class="secondary small">Clear (Esc)</button>
+                <button id="show-steps-btn" class="secondary small" disabled>Show steps</button>
               </div>
             </div>
           </div>
@@ -609,12 +542,7 @@
                   <div class="score-value" id="stat-best-streak">0</div>
                 </div>
               </div>
-              <div
-                class="summary-toggle"
-                id="summary-toggle"
-                role="button"
-                tabindex="0"
-              >
+              <div class="summary-toggle" id="summary-toggle" role="button" tabindex="0">
                 Show / hide incorrect questions
               </div>
               <div class="summary-panel" id="summary-panel"></div>
@@ -635,14 +563,10 @@
               <option value="15">15</option>
             </select>
             <button id="worksheet-generate-btn">Generate worksheet</button>
-            <button id="worksheet-reveal-all-btn" class="secondary small">
-              Reveal all
-            </button>
-            <button id="worksheet-hide-all-btn" class="secondary small">
-              Hide all
-            </button>
+            <button id="worksheet-reveal-all-btn" class="secondary small">Reveal all</button>
+            <button id="worksheet-hide-all-btn" class="secondary small">Hide all</button>
           </div>
-          <div style="font-size:0.82rem; color:var(--muted); margin-bottom:6px;">
+          <div style="font-size:0.82rem; color:var(--muted); margin-bottom:6px;" id="worksheet-instruction">
             Instruction: Find the missing angle A. (Angles on a straight line add up to 180°.)
           </div>
           <div class="worksheet-list" id="worksheet-list"></div>
@@ -687,13 +611,8 @@
       osc.stop(now + duration);
     }
 
-    function playCorrectSound() {
-      playBeep(880, 0.18);
-    }
-
-    function playWrongSound() {
-      playBeep(220, 0.25);
-    }
+    function playCorrectSound() { playBeep(880, 0.18); }
+    function playWrongSound() { playBeep(220, 0.25); }
 
     const diagramContainer = document.getElementById("diagram-container");
     const promptTextEl = document.getElementById("prompt-text");
@@ -724,6 +643,8 @@
     const soundSwitch = document.getElementById("sound-switch");
     const contrastSwitch = document.getElementById("contrast-switch");
 
+    const modeSelect = document.getElementById("mode-select");
+
     const tabGame = document.getElementById("tab-game");
     const tabWorksheet = document.getElementById("tab-worksheet");
     const gameMode = document.getElementById("game-mode");
@@ -734,6 +655,7 @@
     const worksheetRevealAllBtn = document.getElementById("worksheet-reveal-all-btn");
     const worksheetHideAllBtn = document.getElementById("worksheet-hide-all-btn");
     const worksheetList = document.getElementById("worksheet-list");
+    const worksheetInstruction = document.getElementById("worksheet-instruction");
 
     let currentQuestion = null;
     let awaitingNext = false;
@@ -751,7 +673,12 @@
     let timerId = null;
     let timerRemaining = 0;
 
-    function generateStraightLineQuestion() {
+    function getMode() {
+      return modeSelect.value === "advanced" ? "advanced" : "basic";
+    }
+
+    // BASIC MODE (current behavior)
+    function generateStraightLineQuestionBasic() {
       const r = Math.random();
       let n;
       if (r < 0.4) n = 2;
@@ -763,9 +690,7 @@
       const remaining = total - n * minSeg;
 
       const cuts = [0];
-      for (let i = 0; i < n - 1; i++) {
-        cuts.push(randInt(0, remaining));
-      }
+      for (let i = 0; i < n - 1; i++) cuts.push(randInt(0, remaining));
       cuts.push(remaining);
       cuts.sort(function (a, b) { return a - b; });
 
@@ -779,17 +704,14 @@
       const Avalue = segments[unknownIndex];
 
       const boundaries = [0];
-      for (let i = 0; i < n; i++) {
-        boundaries.push(boundaries[i] + segments[i]);
-      }
+      for (let i = 0; i < n; i++) boundaries.push(boundaries[i] + segments[i]);
 
       const knownValues = [];
-      for (let i = 0; i < n; i++) {
-        if (i !== unknownIndex) knownValues.push(segments[i]);
-      }
+      for (let i = 0; i < n; i++) if (i !== unknownIndex) knownValues.push(segments[i]);
       const knownSum = knownValues.reduce((a, b) => a + b, 0);
 
       return {
+        type: "basic",
         id: ++questionCounter,
         segments,
         unknownIndex,
@@ -798,6 +720,43 @@
         knownValues,
         knownSum
       };
+    }
+
+    // ADVANCED MODE (equation-style, like your example)
+    // We keep the same art style, but now the other angle is shown as kA,
+    // so students must form A + kA = 180 (or kA + A = 180).
+    function generateStraightLineQuestionAdvanced() {
+      // Choose k so that A = 180/(k+1) stays an integer:
+      // k in {2,3,4,5} => k+1 in {3,4,5,6} divides 180
+      const kOptions = [2, 3, 4, 5];
+      const k = kOptions[randInt(0, kOptions.length - 1)];
+      const Avalue = 180 / (k + 1);   // integer by design
+      const other = 180 - Avalue;     // = k*Avalue
+
+      // Decide whether A is on the left segment or right segment for variety
+      const AOnLeft = Math.random() < 0.5;
+
+      const segments = AOnLeft ? [Avalue, other] : [other, Avalue];
+      const unknownIndex = AOnLeft ? 0 : 1;
+
+      // boundaries for drawing (we still draw using true angles)
+      const boundaries = [0, segments[0], 180];
+
+      return {
+        type: "advanced",
+        id: ++questionCounter,
+        k,
+        AOnLeft,
+        segments,
+        unknownIndex,
+        A: Avalue,
+        boundaries
+      };
+    }
+
+    function generateQuestionByMode(mode) {
+      if (mode === "advanced") return generateStraightLineQuestionAdvanced();
+      return generateStraightLineQuestionBasic();
     }
 
     function createDiagramSVG(question) {
@@ -813,15 +772,12 @@
       svg.setAttribute("role", "img");
       svg.setAttribute(
         "aria-label",
-        "A straight line with the top side divided into angles, one labeled A and the others given in degrees."
+        "A straight line with angles on the top side, one labeled A."
       );
 
       function pointOnCircle(angleDeg, r) {
         const rad = (angleDeg * Math.PI) / 180;
-        return {
-          x: cx + r * Math.cos(rad),
-          y: cy - r * Math.sin(rad)
-        };
+        return { x: cx + r * Math.cos(rad), y: cy - r * Math.sin(rad) };
       }
 
       // Base horizontal line
@@ -839,7 +795,7 @@
       const n = question.segments.length;
       const boundaries = question.boundaries;
 
-      // Rays
+      // Rays (internal boundaries only)
       for (let i = 1; i < n; i++) {
         const angleDeg = boundaries[i];
         const outer = pointOnCircle(angleDeg, lineLen);
@@ -868,12 +824,24 @@
         text.setAttribute("font-size", "13");
         text.setAttribute("font-weight", "600");
 
-        if (i === question.unknownIndex) {
-          text.setAttribute("fill", "#ffffff");
-          text.textContent = "A";
+        if (question.type === "advanced") {
+          // Show "A" on the unknown segment; show "kA" on the other.
+          if (i === question.unknownIndex) {
+            text.setAttribute("fill", "#ffffff");
+            text.textContent = "A";
+          } else {
+            text.setAttribute("fill", "#ffcc80");
+            text.textContent = question.k + "A";
+          }
         } else {
-          text.setAttribute("fill", "#ffcc80");
-          text.textContent = question.segments[i] + "°";
+          // Basic mode behavior
+          if (i === question.unknownIndex) {
+            text.setAttribute("fill", "#ffffff");
+            text.textContent = "A";
+          } else {
+            text.setAttribute("fill", "#ffcc80");
+            text.textContent = question.segments[i] + "°";
+          }
         }
 
         svg.appendChild(text);
@@ -885,14 +853,11 @@
     function varError() {
       return getComputedStyle(document.body).getPropertyValue("--error").trim() || "#ff5252";
     }
-
     function varSuccess() {
       return getComputedStyle(document.body).getPropertyValue("--success").trim() || "#4caf50";
     }
 
-    function resetInputs() {
-      inputA.value = "";
-    }
+    function resetInputs() { inputA.value = ""; }
 
     function setInputsEnabled(enabled) {
       inputA.disabled = !enabled;
@@ -902,9 +867,7 @@
     function updateStats() {
       statTotal.textContent = totalQuestions;
       statCorrect.textContent = correctQuestions;
-      const acc = totalQuestions === 0
-        ? 0
-        : Math.round((correctQuestions / totalQuestions) * 100);
+      const acc = totalQuestions === 0 ? 0 : Math.round((correctQuestions / totalQuestions) * 100);
       statAccuracy.textContent = acc + "%";
       statScore.textContent = score;
       statStreak.textContent = currentStreak;
@@ -924,17 +887,10 @@
 
     function showCorrectFeedback(points, bonus) {
       feedbackStatus.innerHTML =
-        '<span class="icon" style="color:' +
-        varSuccess() +
-        ';">✔</span><span id="feedback-title">Correct!</span>';
+        '<span class="icon" style="color:' + varSuccess() + ';">✔</span><span id="feedback-title">Correct!</span>';
       let msg = "Great job – A is correct.";
       if (points || bonus) {
-        msg +=
-          " +" +
-          points +
-          " points" +
-          (bonus ? " and +" + bonus + " streak bonus!" : "") +
-          ".";
+        msg += " +" + points + " points" + (bonus ? " and +" + bonus + " streak bonus!" : "") + ".";
       }
       feedbackMessage.textContent = msg;
       stepsPanel.style.display = "none";
@@ -945,18 +901,28 @@
 
     function showIncorrectFeedback(reason) {
       feedbackStatus.innerHTML =
-        '<span class="icon" style="color:' +
-        varError() +
-        ';">✖</span><span id="feedback-title">Not quite yet…</span>';
+        '<span class="icon" style="color:' + varError() + ';">✖</span><span id="feedback-title">Not quite yet…</span>';
       feedbackMessage.textContent =
         reason ||
-        "Remember: angles on a straight line add up to 180°. Add the known angles and subtract from 180°.";
+        "Remember: angles on a straight line add up to 180°.";
       showStepsBtn.disabled = false;
       showStepsBtn.dataset.open = "0";
     }
 
     function buildStepsExplanation(question) {
       const lines = [];
+
+      if (question.type === "advanced") {
+        lines.push("1. Angles on a straight line add up to 180°.");
+        lines.push("2. The diagram shows two angles: A and " + question.k + "A.");
+        lines.push("3. Write an equation: A + " + question.k + "A = 180.");
+        lines.push("4. Combine like terms: " + (question.k + 1) + "A = 180.");
+        lines.push("5. Divide both sides by " + (question.k + 1) + ": A = 180 / " + (question.k + 1) + " = " + question.A + "°.");
+        lines.push("6. (Check) The other angle is " + (180 - question.A) + "°.");
+        return lines;
+      }
+
+      // Basic mode
       const segs = question.segments;
       const n = segs.length;
       const known = [];
@@ -967,31 +933,12 @@
       const A = question.A;
 
       lines.push("1. Angles on a straight line add up to 180°.");
-      const descriptionParts = segs.map((val, idx) =>
-        idx === question.unknownIndex ? "A" : val + "°"
-      );
-      lines.push(
-        "2. Along this straight line we have the angles: " +
-          descriptionParts.join(", ") +
-          "."
-      );
+      const descriptionParts = segs.map((val, idx) => (idx === question.unknownIndex ? "A" : val + "°"));
+      lines.push("2. Along this straight line we have the angles: " + descriptionParts.join(", ") + ".");
       if (known.length > 0) {
-        lines.push(
-          "3. Add the known angles: " +
-            known.map(v => v + "°").join(" + ") +
-            " = " +
-            knownSum +
-            "°."
-        );
+        lines.push("3. Add the known angles: " + known.map(v => v + "°").join(" + ") + " = " + knownSum + "°.");
       }
-      lines.push(
-        "4. Since the total is 180°, A = 180° − " +
-          knownSum +
-          "° = " +
-          A +
-          "°."
-      );
-
+      lines.push("4. Since the total is 180°, A = 180° - " + knownSum + "° = " + A + "°.");
       return lines;
     }
 
@@ -1004,18 +951,19 @@
     function addToIncorrectLog(question, userA) {
       const item = document.createElement("div");
       item.className = "summary-item";
-      item.innerHTML =
-        "<strong>Q" +
-        question.id +
-        "</strong> (segments: " +
-        question.segments.length +
-        ")<br>" +
-        "Your answer: A = " +
-        (userA === null || userA === undefined ? "" : userA) +
-        "°. " +
-        "Correct: A = " +
-        question.A +
-        "°.";
+
+      if (question.type === "advanced") {
+        item.innerHTML =
+          "<strong>Q" + question.id + "</strong> (Advanced, shows A and " + question.k + "A)<br>" +
+          "Your answer: A = " + (userA === null || userA === undefined ? "" : userA) + "°. " +
+          "Correct: A = " + question.A + "°.";
+      } else {
+        item.innerHTML =
+          "<strong>Q" + question.id + "</strong> (Basic, segments: " + question.segments.length + ")<br>" +
+          "Your answer: A = " + (userA === null || userA === undefined ? "" : userA) + "°. " +
+          "Correct: A = " + question.A + "°.";
+      }
+
       summaryPanel.appendChild(item);
     }
 
@@ -1043,9 +991,7 @@
           handleTimeUp();
         } else {
           timerDisplay.textContent = timerRemaining + " s";
-          if (timerRemaining <= 5) {
-            timerDisplay.classList.add("danger");
-          }
+          if (timerRemaining <= 5) timerDisplay.classList.add("danger");
         }
       }, 1000);
     }
@@ -1059,21 +1005,44 @@
       showIncorrectFeedback("Time's up. You can still try again or show the steps.");
     }
 
+    function setProblemTextForMode(mode, question) {
+      if (mode === "advanced") {
+        promptTextEl.textContent = "Find angle A.";
+        givenTextEl.textContent =
+          "Advanced: The larger angle is " + question.k + " times the smaller angle. (Angles on a straight line add up to 180°.)";
+      } else {
+        promptTextEl.textContent = "Find angle A.";
+        givenTextEl.textContent = "Angles on a straight line add up to 180°.";
+      }
+    }
+
+    function updateWorksheetInstruction() {
+      const mode = getMode();
+      if (mode === "advanced") {
+        worksheetInstruction.textContent =
+          "Instruction: Find angle A. (Advanced: the other angle is shown as kA. Use an equation and the fact the total is 180°.)";
+      } else {
+        worksheetInstruction.textContent =
+          "Instruction: Find the missing angle A. (Angles on a straight line add up to 180°.)";
+      }
+    }
+
     function loadNewQuestion() {
-      currentQuestion = generateStraightLineQuestion();
+      const mode = getMode();
+      currentQuestion = generateQuestionByMode(mode);
       awaitingNext = false;
       resetInputs();
       setInputsEnabled(true);
-      promptTextEl.textContent = "Find angle A.";
-      givenTextEl.textContent = "Angles on a straight line add up to 180°.";
+
+      setProblemTextForMode(mode, currentQuestion);
+
       diagramContainer.innerHTML = "";
       diagramContainer.appendChild(createDiagramSVG(currentQuestion));
+
       setFeedbackWaiting();
-      if (timerEnabled) {
-        startTimer();
-      } else {
-        clearTimer();
-      }
+      if (timerEnabled) startTimer();
+      else clearTimer();
+
       inputA.focus();
     }
 
@@ -1081,9 +1050,7 @@
       if (val === null || val === undefined) return null;
       const trimmed = String(val).trim();
       if (!trimmed) return null;
-      if (!/^-?\d+$/.test(trimmed)) {
-        return NaN;
-      }
+      if (!/^-?\d+$/.test(trimmed)) return NaN;
       return parseInt(trimmed, 10);
     }
 
@@ -1107,9 +1074,17 @@
         currentStreak = 0;
         totalQuestions += 1;
         updateStats();
-        showIncorrectFeedback(
-          "A is not correct yet. Add the given angles and subtract from 180°."
-        );
+
+        if (currentQuestion.type === "advanced") {
+          showIncorrectFeedback(
+            "Not yet. Use an equation: A + " + currentQuestion.k + "A = 180."
+          );
+        } else {
+          showIncorrectFeedback(
+            "A is not correct yet. Add the given angles and subtract from 180°."
+          );
+        }
+
         addToIncorrectLog(currentQuestion, val);
         return;
       }
@@ -1119,30 +1094,26 @@
       correctQuestions += 1;
       currentStreak += 1;
       if (currentStreak > bestStreak) bestStreak = currentStreak;
+
       let basePoints = 10;
       let bonus = 0;
-      if (currentStreak > 0 && currentStreak % 5 === 0) {
-        bonus = 5;
-      }
+      if (currentStreak > 0 && currentStreak % 5 === 0) bonus = 5;
       score += basePoints + bonus;
+
       updateStats();
       showCorrectFeedback(basePoints, bonus);
       setInputsEnabled(false);
       clearTimer();
     }
 
-    function handleNext() {
-      loadNewQuestion();
-    }
+    function handleNext() { loadNewQuestion(); }
 
     function handleClear() {
       resetInputs();
       stepsPanel.style.display = "none";
       showStepsBtn.dataset.open = "0";
       setFeedbackWaiting();
-      if (!awaitingNext && timerEnabled) {
-        startTimer();
-      }
+      if (!awaitingNext && timerEnabled) startTimer();
       inputA.focus();
     }
 
@@ -1164,10 +1135,17 @@
 
       const header = document.createElement("div");
       header.className = "worksheet-header";
-      header.innerHTML =
-        "<span><strong>" +
-        index +
-        ".</strong> Find angle A.</span><span>Angles on a straight line add up to 180°.</span>";
+
+      if (question.type === "advanced") {
+        header.innerHTML =
+          "<span><strong>" + index + ".</strong> Find angle A.</span>" +
+          "<span>Advanced: A and " + question.k + "A add to 180°.</span>";
+      } else {
+        header.innerHTML =
+          "<span><strong>" + index + ".</strong> Find angle A.</span>" +
+          "<span>Angles on a straight line add up to 180°.</span>";
+      }
+
       wrapper.appendChild(header);
 
       const diagBox = document.createElement("div");
@@ -1183,7 +1161,6 @@
       angleDiv.innerHTML =
         "<span>A</span><input type='text' inputmode='numeric' size='3' aria-label='Worksheet angle A' /><span class='deg-symbol'>°</span>";
       inputsRow.appendChild(angleDiv);
-
       wrapper.appendChild(inputsRow);
 
       const buttonsRow = document.createElement("div");
@@ -1196,7 +1173,14 @@
 
       const answers = document.createElement("div");
       answers.className = "worksheet-answers";
-      answers.textContent = "Answer: A = " + question.A + "°.";
+
+      if (question.type === "advanced") {
+        answers.textContent =
+          "Answer: A = " + question.A + "°. Other angle = " + (180 - question.A) + "°.";
+      } else {
+        answers.textContent = "Answer: A = " + question.A + "°.";
+      }
+
       wrapper.appendChild(answers);
 
       revealBtn.addEventListener("click", function () {
@@ -1208,10 +1192,12 @@
     }
 
     function generateWorksheet() {
+      updateWorksheetInstruction();
       worksheetList.innerHTML = "";
       const count = parseInt(worksheetCountSelect.value, 10) || 10;
+      const mode = getMode();
       for (let i = 1; i <= count; i++) {
-        const q = generateStraightLineQuestion();
+        const q = generateQuestionByMode(mode);
         const item = createWorksheetQuestion(i, q);
         worksheetList.appendChild(item);
       }
@@ -1241,12 +1227,8 @@
       }
     }
 
-    tabGame.addEventListener("click", function () {
-      setActiveTab("game");
-    });
-    tabWorksheet.addEventListener("click", function () {
-      setActiveTab("worksheet");
-    });
+    tabGame.addEventListener("click", function () { setActiveTab("game"); });
+    tabWorksheet.addEventListener("click", function () { setActiveTab("worksheet"); });
 
     soundSwitch.addEventListener("click", function () {
       soundOn = !soundOn;
@@ -1272,6 +1254,18 @@
       if (timerEnabled) startTimer();
     });
 
+    // Mode change: reload question and update worksheet instruction
+    modeSelect.addEventListener("change", function () {
+      updateWorksheetInstruction();
+      if (gameMode.style.display !== "none") {
+        loadNewQuestion();
+      } else {
+        // If in worksheet mode, don't auto-generate, just update instruction text
+        // (user can click Generate)
+        worksheetList.innerHTML = "";
+      }
+    });
+
     submitBtn.addEventListener("click", handleSubmit);
     nextBtn.addEventListener("click", handleNext);
     clearBtn.addEventListener("click", handleClear);
@@ -1282,9 +1276,8 @@
     });
 
     window.addEventListener("keydown", function (e) {
-      if (document.activeElement && document.activeElement.tagName === "TEXTAREA") {
-        return;
-      }
+      if (document.activeElement && document.activeElement.tagName === "TEXTAREA") return;
+
       if (e.key === "Enter") {
         e.preventDefault();
         if (gameMode.style.display !== "none") {
@@ -1303,6 +1296,7 @@
     worksheetRevealAllBtn.addEventListener("click", revealAllWorksheet);
     worksheetHideAllBtn.addEventListener("click", hideAllWorksheet);
 
+    updateWorksheetInstruction();
     updateStats();
     loadNewQuestion();
   </script>
