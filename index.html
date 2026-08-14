@@ -1,1304 +1,385 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Angles on a Straight Line – Missing Angle A | Mr. McLean Math</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    :root {
-      --bg: #0b1020;
-      --panel: #141b33;
-      --panel-soft: #1c2440;
-      --accent: #ffb300;
-      --accent-soft: #fff3cd;
-      --accent-strong: #ffa000;
-      --text: #f5f7ff;
-      --muted: #9ca7d9;
-      --error: #ff5252;
-      --success: #4caf50;
-      --border: #2a355c;
-    }
-
-    body.high-contrast {
-      --bg: #000000;
-      --panel: #000000;
-      --panel-soft: #000000;
-      --accent: #ffffff;
-      --accent-soft: #ffffff;
-      --accent-strong: #ffffff;
-      --text: #ffffff;
-      --muted: #d0d0d0;
-      --border: #ffffff;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #182447 0, #050814 55%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    .app {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 16px;
-    }
-
-    h1 {
-      margin: 0 0 4px;
-      font-size: 1.6rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      font-size: 1.1rem;
-      margin: 0 0 8px;
-    }
-
-    .subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .shell {
-      background: rgba(8, 12, 30, 0.9);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      padding: 12px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
-    }
-
-    .top-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .left-column, .right-column {
-      flex: 1 1 280px;
-      min-width: 0;
-    }
-
-    .card {
-      background: var(--panel);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      padding: 12px;
-      margin-bottom: 10px;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      gap: 6px;
-    }
-
-    .tabs {
-      display: inline-flex;
-      border-radius: 999px;
-      background: var(--panel-soft);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      font-size: 0.85rem;
-    }
-
-    .tab {
-      padding: 5px 12px;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    .tab.active {
-      background: var(--accent);
-      color: #000;
-      font-weight: 600;
-    }
-
-    .controls-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .toggle-group {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: var(--panel-soft);
-      border: 1px solid var(--border);
-    }
-
-    .toggle-label { font-size: 0.78rem; }
-
-    .switch {
-      position: relative;
-      width: 30px;
-      height: 16px;
-      border-radius: 999px;
-      background: #555b7a;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .switch-thumb {
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #ffffff;
-      transition: transform 0.18s ease;
-    }
-
-    .switch.on { background: #7cb342; }
-    .switch.on .switch-thumb { transform: translateX(14px); }
-
-    select, input[type="number"], input[type="text"] {
-      background: #070a18;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 0.85rem;
-      padding: 4px 10px;
-      outline: none;
-      min-width: 0;
-    }
-
-    select:focus, input[type="number"]:focus, input[type="text"]:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(255, 179, 0, 0.6);
-    }
-
-    button {
-      border-radius: 999px;
-      border: none;
-      padding: 6px 14px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      background: var(--accent);
-      color: #000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    button.secondary {
-      background: var(--panel-soft);
-      color: var(--text);
-      box-shadow: none;
-    }
-
-    button.small {
-      padding: 4px 10px;
-      font-size: 0.8rem;
-    }
-
-    button:disabled {
-      opacity: 0.5;
-      cursor: default;
-      box-shadow: none;
-    }
-
-    .diagram-wrapper {
-      border-radius: 12px;
-      background: radial-gradient(circle at top, #1c2442 0, #070b19 60%);
-      border: 1px solid var(--border);
-      padding: 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 260px;
-    }
-
-    svg { max-width: 100%; height: auto; }
-
-    .prompt-text { font-size: 0.9rem; margin: 8px 0 2px; }
-    .given-text { font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
-
-    .inputs-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 6px 0;
-      align-items: center;
-    }
-
-    .angle-input {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.9rem;
-      background: var(--panel-soft);
-      padding: 4px 8px;
-      border-radius: 999px;
-    }
-
-    .angle-input span { font-weight: 600; min-width: 14px; }
-    .angle-input input { width: 64px; text-align: center; }
-
-    .deg-symbol { font-size: 0.8rem; color: var(--muted); }
-
-    .buttons-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 6px;
-    }
-
-    .feedback-card { min-height: 120px; }
-
-    .feedback-status {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .feedback-status span.icon { font-size: 1.2rem; }
-
-    .feedback-message { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
-
-    .steps {
-      font-size: 0.8rem;
-      background: #080c1c;
-      border-radius: 8px;
-      border: 1px dashed var(--border);
-      padding: 6px 8px;
-      max-height: 220px;
-      overflow-y: auto;
-    }
-
-    .steps p { margin: 3px 0; }
-
-    .score-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px;
-      font-size: 0.78rem;
-    }
-
-    .score-item {
-      background: var(--panel-soft);
-      border-radius: 8px;
-      padding: 6px;
-      text-align: center;
-    }
-
-    .score-label { color: var(--muted); margin-bottom: 2px; }
-    .score-value { font-weight: 600; }
-
-    .summary-toggle {
-      margin-top: 6px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    .summary-panel {
-      margin-top: 6px;
-      max-height: 220px;
-      overflow-y: auto;
-      border-top: 1px solid var(--border);
-      padding-top: 6px;
-      font-size: 0.8rem;
-      display: none;
-    }
-
-    .summary-panel.visible { display: block; }
-
-    .summary-item {
-      padding: 4px 0;
-      border-bottom: 1px dashed var(--border);
-    }
-
-    .summary-item:last-child { border-bottom: none; }
-
-    .timer-display {
-      font-size: 0.8rem;
-      color: var(--accent-soft);
-      font-weight: 600;
-    }
-
-    .timer-display.danger { color: var(--error); }
-
-    .worksheet-controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      margin-bottom: 6px;
-      font-size: 0.85rem;
-    }
-
-    .worksheet-list { font-size: 0.86rem; }
-
-    .worksheet-item {
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: 8px;
-      margin-bottom: 8px;
-      background: #080c1c;
-    }
-
-    .worksheet-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4px;
-      font-size: 0.8rem;
-      color: var(--muted);
-      gap: 8px;
-    }
-
-    .worksheet-diagram {
-      border-radius: 8px;
-      background: radial-gradient(circle at top, #1c2442 0, #070b19 60%);
-      border: 1px solid var(--border);
-      padding: 6px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 4px;
-    }
-
-    .worksheet-diagram svg { max-width: 220px; height: auto; }
-
-    .worksheet-inputs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      align-items: center;
-      margin-top: 2px;
-      margin-bottom: 4px;
-    }
-
-    .worksheet-answers {
-      font-size: 0.8rem;
-      color: var(--accent-soft);
-      display: none;
-    }
-
-    .worksheet-answers.visible { display: block; }
-
-    footer {
-      margin-top: 10px;
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    @media (max-width: 720px) {
-      .score-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Angles on a Straight Line – Mr. McLean Math</title>
+<style>
+:root{--bg:#0b1020;--card:#141b33;--soft:#1c2440;--text:#f5f7ff;--muted:#aab3d4;--border:#2a355c;--accent:#ffb300;--good:#4caf50;--bad:#ff5252}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top,#182447 0,#050814 58%);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:20px 14px 30px}
+header{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:14px}
+h1{margin:0;font-size:clamp(24px,3vw,34px)}
+.subtitle{margin-top:5px;color:var(--muted);font-size:14px}
+.tabs,.modes,.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:inherit;background:var(--soft);color:var(--text);border:1px solid var(--border);border-radius:11px;padding:9px 12px;font-weight:800;cursor:pointer}
+button.active,button.primary{background:var(--accent);border-color:var(--accent);color:#111}
+button:disabled{opacity:.5;cursor:not-allowed}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
+.toolbar{display:flex;justify-content:space-between;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.label{font-size:12px;color:var(--muted);font-weight:800;margin-bottom:6px}
+.diagram{display:flex;justify-content:center;align-items:center;min-height:270px;margin:14px 0;border:1px solid var(--border);border-radius:14px;background:radial-gradient(circle at top,#1c2442 0,#070b19 60%)}
+.diagram svg{width:min(100%,420px);height:auto}
+.prompt{text-align:center;font-size:18px;font-weight:800;margin-top:8px}
+.given{text-align:center;color:var(--muted);font-size:14px;margin-bottom:12px}
+.answer-row{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}
+input{font:inherit;font-size:20px;background:#070a18;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px 12px;width:170px;text-align:center}
+.feedback{min-height:48px;margin-top:12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;text-align:center}
+.feedback.ok{color:var(--good);font-weight:850}.feedback.bad{color:var(--bad);font-weight:850}
+.steps{display:none;margin-top:10px;padding:11px 12px;border:1px solid var(--border);border-radius:12px;background:#080c1c}
+.steps.show{display:block}
+.stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}.stat{padding:7px 11px;border:1px solid var(--border);border-radius:999px;font-size:13px;font-weight:800}
+.worksheet{display:none}.ws-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+select{font:inherit;background:#070a18;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:9px 10px}
+.ws-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ws-item{border:1px solid var(--border);border-radius:12px;padding:10px;background:#080c1c}
+.ws-title{font-weight:800;margin-bottom:5px}.ws-diagram{display:flex;justify-content:center;align-items:center;min-height:180px}
+.ws-diagram svg{width:100%;max-width:240px;height:auto}
+.ws-answer{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);color:var(--good);font-weight:800}.ws-answer.show{display:block}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:14px}
+@media(max-width:680px){.ws-grid{grid-template-columns:1fr}.answer-row{align-items:stretch}.answer-row input{width:100%}}
+@media print{body{background:#fff;color:#000}.wrap{max-width:none;padding:0}header,#practiceCard,.no-print,.footer{display:none!important}#worksheetCard{display:block!important;background:#fff;color:#000;border:0;padding:0}.ws-grid{grid-template-columns:repeat(2,1fr)}.ws-item{background:#fff;color:#000;border-color:#000}.ws-answer{display:none!important}}
+</style>
 </head>
 <body>
-  <div class="app">
-    <h1>Angles on a Straight Line – Missing Angle A</h1>
-    <div class="subtitle">
-      A straight angle is 180°. Use this to find the missing angle A.
-      Choose Basic for classic “add and subtract”, or Advanced for equation-style problems.
-    </div>
-
-    <div class="shell" aria-label="Angle game">
-      <div class="card-header" style="margin-bottom:10px;">
-        <div class="tabs" role="tablist">
-          <button class="tab active" id="tab-game" role="tab" aria-selected="true">Game mode</button>
-          <button class="tab" id="tab-worksheet" role="tab" aria-selected="false">Worksheet mode</button>
-        </div>
-
-        <div class="controls-row">
-          <div class="toggle-group" id="mode-toggle-group" title="Problem type">
-            <span class="toggle-label">Mode</span>
-            <select id="mode-select" aria-label="Mode select">
-              <option value="basic" selected>Basic</option>
-              <option value="advanced">Advanced</option>
-            </select>
-          </div>
-
-          <div class="toggle-group" id="sound-toggle-group">
-            <span class="toggle-label">Sound</span>
-            <div class="switch on" id="sound-switch" aria-label="Sound toggle">
-              <div class="switch-thumb"></div>
-            </div>
-          </div>
-
-          <div class="toggle-group" id="contrast-toggle-group">
-            <span class="toggle-label">High contrast</span>
-            <div class="switch" id="contrast-switch" aria-label="Contrast toggle">
-              <div class="switch-thumb"></div>
-            </div>
-          </div>
-
-          <div class="toggle-group" id="timer-toggle-group">
-            <span class="toggle-label">Timer</span>
-            <div class="switch" id="timer-switch" aria-label="Timer toggle">
-              <div class="switch-thumb"></div>
-            </div>
-            <select id="timer-select">
-              <option value="30">30 s</option>
-              <option value="60" selected>60 s</option>
-              <option value="90">90 s</option>
-              <option value="120">120 s</option>
-            </select>
-            <span class="timer-display" id="timer-display"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- GAME MODE -->
-      <div id="game-mode">
-        <div class="top-row">
-          <div class="left-column">
-            <div class="card" aria-label="Problem area">
-              <h2>Current question</h2>
-              <div class="diagram-wrapper" id="diagram-container" aria-label="Angle diagram"></div>
-              <div class="prompt-text" id="prompt-text"></div>
-              <div class="given-text" id="given-text"></div>
-
-              <div class="inputs-row">
-                <div class="angle-input">
-                  <span>A</span>
-                  <input
-                    type="text"
-                    id="input-A"
-                    inputmode="numeric"
-                    autocomplete="off"
-                    aria-label="Angle A in degrees"
-                  />
-                  <span class="deg-symbol">°</span>
-                </div>
-              </div>
-
-              <div class="buttons-row">
-                <button id="submit-btn">Submit</button>
-                <button id="next-btn" class="secondary">Next</button>
-                <button id="clear-btn" class="secondary small">Clear (Esc)</button>
-                <button id="show-steps-btn" class="secondary small" disabled>Show steps</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="right-column">
-            <div class="card feedback-card" aria-live="polite" id="feedback-card">
-              <h2>Result</h2>
-              <div class="feedback-status" id="feedback-status">
-                <span class="icon">➖</span>
-                <span id="feedback-title">Waiting for your answer…</span>
-              </div>
-              <div class="feedback-message" id="feedback-message">
-                Type your answer for angle A, then press Enter or click Submit.
-              </div>
-              <div class="steps" id="steps-panel" style="display:none;"></div>
-            </div>
-
-            <div class="card">
-              <h2>Score & summary</h2>
-              <div class="score-grid">
-                <div class="score-item">
-                  <div class="score-label">Total questions</div>
-                  <div class="score-value" id="stat-total">0</div>
-                </div>
-                <div class="score-item">
-                  <div class="score-label">Correct</div>
-                  <div class="score-value" id="stat-correct">0</div>
-                </div>
-                <div class="score-item">
-                  <div class="score-label">Accuracy</div>
-                  <div class="score-value" id="stat-accuracy">0%</div>
-                </div>
-                <div class="score-item">
-                  <div class="score-label">Score</div>
-                  <div class="score-value" id="stat-score">0</div>
-                </div>
-                <div class="score-item">
-                  <div class="score-label">Current streak</div>
-                  <div class="score-value" id="stat-streak">0</div>
-                </div>
-                <div class="score-item">
-                  <div class="score-label">Best streak</div>
-                  <div class="score-value" id="stat-best-streak">0</div>
-                </div>
-              </div>
-              <div class="summary-toggle" id="summary-toggle" role="button" tabindex="0">
-                Show / hide incorrect questions
-              </div>
-              <div class="summary-panel" id="summary-panel"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- WORKSHEET MODE -->
-      <div id="worksheet-mode" style="display:none;">
-        <div class="card">
-          <h2>Worksheet generator</h2>
-          <div class="worksheet-controls">
-            <span>How many questions?</span>
-            <select id="worksheet-count">
-              <option value="5">5</option>
-              <option value="10" selected>10</option>
-              <option value="15">15</option>
-            </select>
-            <button id="worksheet-generate-btn">Generate worksheet</button>
-            <button id="worksheet-reveal-all-btn" class="secondary small">Reveal all</button>
-            <button id="worksheet-hide-all-btn" class="secondary small">Hide all</button>
-          </div>
-          <div style="font-size:0.82rem; color:var(--muted); margin-bottom:6px;" id="worksheet-instruction">
-            Instruction: Find the missing angle A. (Angles on a straight line add up to 180°.)
-          </div>
-          <div class="worksheet-list" id="worksheet-list"></div>
-        </div>
-      </div>
-    </div>
-
-    <footer>Created by Mr. McLean Math.</footer>
-  </div>
-
-  <script>
-    function randInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    let audioCtx = null;
-    let soundOn = true;
-
-    function ensureAudio() {
-      if (!audioCtx) {
-        try {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        } catch (e) {
-          audioCtx = null;
-        }
-      }
-    }
-
-    function playBeep(freq, duration) {
-      if (!soundOn) return;
-      ensureAudio();
-      if (!audioCtx) return;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = "sine";
-      osc.frequency.value = freq;
-      gain.gain.value = 0.12;
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      const now = audioCtx.currentTime;
-      osc.start(now);
-      osc.stop(now + duration);
-    }
-
-    function playCorrectSound() { playBeep(880, 0.18); }
-    function playWrongSound() { playBeep(220, 0.25); }
-
-    const diagramContainer = document.getElementById("diagram-container");
-    const promptTextEl = document.getElementById("prompt-text");
-    const givenTextEl = document.getElementById("given-text");
-    const inputA = document.getElementById("input-A");
-    const submitBtn = document.getElementById("submit-btn");
-    const nextBtn = document.getElementById("next-btn");
-    const clearBtn = document.getElementById("clear-btn");
-    const showStepsBtn = document.getElementById("show-steps-btn");
-
-    const feedbackStatus = document.getElementById("feedback-status");
-    const feedbackMessage = document.getElementById("feedback-message");
-    const stepsPanel = document.getElementById("steps-panel");
-
-    const statTotal = document.getElementById("stat-total");
-    const statCorrect = document.getElementById("stat-correct");
-    const statAccuracy = document.getElementById("stat-accuracy");
-    const statScore = document.getElementById("stat-score");
-    const statStreak = document.getElementById("stat-streak");
-    const statBestStreak = document.getElementById("stat-best-streak");
-    const summaryToggle = document.getElementById("summary-toggle");
-    const summaryPanel = document.getElementById("summary-panel");
-
-    const timerSwitch = document.getElementById("timer-switch");
-    const timerSelect = document.getElementById("timer-select");
-    const timerDisplay = document.getElementById("timer-display");
-
-    const soundSwitch = document.getElementById("sound-switch");
-    const contrastSwitch = document.getElementById("contrast-switch");
-
-    const modeSelect = document.getElementById("mode-select");
-
-    const tabGame = document.getElementById("tab-game");
-    const tabWorksheet = document.getElementById("tab-worksheet");
-    const gameMode = document.getElementById("game-mode");
-    const worksheetMode = document.getElementById("worksheet-mode");
-
-    const worksheetCountSelect = document.getElementById("worksheet-count");
-    const worksheetGenerateBtn = document.getElementById("worksheet-generate-btn");
-    const worksheetRevealAllBtn = document.getElementById("worksheet-reveal-all-btn");
-    const worksheetHideAllBtn = document.getElementById("worksheet-hide-all-btn");
-    const worksheetList = document.getElementById("worksheet-list");
-    const worksheetInstruction = document.getElementById("worksheet-instruction");
-
-    let currentQuestion = null;
-    let awaitingNext = false;
-
-    let totalQuestions = 0;
-    let correctQuestions = 0;
-    let score = 0;
-    let currentStreak = 0;
-    let bestStreak = 0;
-    let questionCounter = 0;
-
-    const incorrectLog = [];
-
-    let timerEnabled = false;
-    let timerId = null;
-    let timerRemaining = 0;
-
-    function getMode() {
-      return modeSelect.value === "advanced" ? "advanced" : "basic";
-    }
-
-    // BASIC MODE (current behavior)
-    function generateStraightLineQuestionBasic() {
-      const r = Math.random();
-      let n;
-      if (r < 0.4) n = 2;
-      else if (r < 0.75) n = 3;
-      else n = 4;
-
-      const minSeg = 20;
-      const total = 180;
-      const remaining = total - n * minSeg;
-
-      const cuts = [0];
-      for (let i = 0; i < n - 1; i++) cuts.push(randInt(0, remaining));
-      cuts.push(remaining);
-      cuts.sort(function (a, b) { return a - b; });
-
-      const segments = [];
-      for (let i = 0; i < n; i++) {
-        const bonus = cuts[i + 1] - cuts[i];
-        segments.push(minSeg + bonus);
-      }
-
-      const unknownIndex = randInt(0, n - 1);
-      const Avalue = segments[unknownIndex];
-
-      const boundaries = [0];
-      for (let i = 0; i < n; i++) boundaries.push(boundaries[i] + segments[i]);
-
-      const knownValues = [];
-      for (let i = 0; i < n; i++) if (i !== unknownIndex) knownValues.push(segments[i]);
-      const knownSum = knownValues.reduce((a, b) => a + b, 0);
-
-      return {
-        type: "basic",
-        id: ++questionCounter,
-        segments,
-        unknownIndex,
-        A: Avalue,
-        boundaries,
-        knownValues,
-        knownSum
-      };
-    }
-
-    // ADVANCED MODE (equation-style, like your example)
-    // We keep the same art style, but now the other angle is shown as kA,
-    // so students must form A + kA = 180 (or kA + A = 180).
-    function generateStraightLineQuestionAdvanced() {
-      // Choose k so that A = 180/(k+1) stays an integer:
-      // k in {2,3,4,5} => k+1 in {3,4,5,6} divides 180
-      const kOptions = [2, 3, 4, 5];
-      const k = kOptions[randInt(0, kOptions.length - 1)];
-      const Avalue = 180 / (k + 1);   // integer by design
-      const other = 180 - Avalue;     // = k*Avalue
-
-      // Decide whether A is on the left segment or right segment for variety
-      const AOnLeft = Math.random() < 0.5;
-
-      const segments = AOnLeft ? [Avalue, other] : [other, Avalue];
-      const unknownIndex = AOnLeft ? 0 : 1;
-
-      // boundaries for drawing (we still draw using true angles)
-      const boundaries = [0, segments[0], 180];
-
-      return {
-        type: "advanced",
-        id: ++questionCounter,
-        k,
-        AOnLeft,
-        segments,
-        unknownIndex,
-        A: Avalue,
-        boundaries
-      };
-    }
-
-    function generateQuestionByMode(mode) {
-      if (mode === "advanced") return generateStraightLineQuestionAdvanced();
-      return generateStraightLineQuestionBasic();
-    }
-
-    function createDiagramSVG(question) {
-      const size = 260;
-      const cx = size / 2;
-      const cy = size / 2 + 30;
-      const lineLen = 110;
-      const labelRadius = 70;
-
-      const svgNS = "http://www.w3.org/2000/svg";
-      const svg = document.createElementNS(svgNS, "svg");
-      svg.setAttribute("viewBox", "0 0 " + size + " " + size);
-      svg.setAttribute("role", "img");
-      svg.setAttribute(
-        "aria-label",
-        "A straight line with angles on the top side, one labeled A."
-      );
-
-      function pointOnCircle(angleDeg, r) {
-        const rad = (angleDeg * Math.PI) / 180;
-        return { x: cx + r * Math.cos(rad), y: cy - r * Math.sin(rad) };
-      }
-
-      // Base horizontal line
-      const left = pointOnCircle(180, lineLen);
-      const right = pointOnCircle(0, lineLen);
-      const baseLine = document.createElementNS(svgNS, "line");
-      baseLine.setAttribute("x1", left.x);
-      baseLine.setAttribute("y1", left.y);
-      baseLine.setAttribute("x2", right.x);
-      baseLine.setAttribute("y2", right.y);
-      baseLine.setAttribute("stroke", "#ffffff");
-      baseLine.setAttribute("stroke-width", "2.4");
-      svg.appendChild(baseLine);
-
-      const n = question.segments.length;
-      const boundaries = question.boundaries;
-
-      // Rays (internal boundaries only)
-      for (let i = 1; i < n; i++) {
-        const angleDeg = boundaries[i];
-        const outer = pointOnCircle(angleDeg, lineLen);
-        const ray = document.createElementNS(svgNS, "line");
-        ray.setAttribute("x1", cx);
-        ray.setAttribute("y1", cy);
-        ray.setAttribute("x2", outer.x);
-        ray.setAttribute("y2", outer.y);
-        ray.setAttribute("stroke", "#ffffff");
-        ray.setAttribute("stroke-width", "2.2");
-        svg.appendChild(ray);
-      }
-
-      // Labels
-      for (let i = 0; i < n; i++) {
-        const startDeg = boundaries[i];
-        const endDeg = boundaries[i + 1];
-        const midDeg = (startDeg + endDeg) / 2;
-
-        const labelPos = pointOnCircle(midDeg, labelRadius);
-        const text = document.createElementNS(svgNS, "text");
-        text.setAttribute("x", labelPos.x);
-        text.setAttribute("y", labelPos.y);
-        text.setAttribute("text-anchor", "middle");
-        text.setAttribute("dominant-baseline", "middle");
-        text.setAttribute("font-size", "13");
-        text.setAttribute("font-weight", "600");
-
-        if (question.type === "advanced") {
-          // Show "A" on the unknown segment; show "kA" on the other.
-          if (i === question.unknownIndex) {
-            text.setAttribute("fill", "#ffffff");
-            text.textContent = "A";
-          } else {
-            text.setAttribute("fill", "#ffcc80");
-            text.textContent = question.k + "A";
-          }
-        } else {
-          // Basic mode behavior
-          if (i === question.unknownIndex) {
-            text.setAttribute("fill", "#ffffff");
-            text.textContent = "A";
-          } else {
-            text.setAttribute("fill", "#ffcc80");
-            text.textContent = question.segments[i] + "°";
-          }
-        }
-
-        svg.appendChild(text);
-      }
-
-      return svg;
-    }
-
-    function varError() {
-      return getComputedStyle(document.body).getPropertyValue("--error").trim() || "#ff5252";
-    }
-    function varSuccess() {
-      return getComputedStyle(document.body).getPropertyValue("--success").trim() || "#4caf50";
-    }
-
-    function resetInputs() { inputA.value = ""; }
-
-    function setInputsEnabled(enabled) {
-      inputA.disabled = !enabled;
-      submitBtn.disabled = !enabled;
-    }
-
-    function updateStats() {
-      statTotal.textContent = totalQuestions;
-      statCorrect.textContent = correctQuestions;
-      const acc = totalQuestions === 0 ? 0 : Math.round((correctQuestions / totalQuestions) * 100);
-      statAccuracy.textContent = acc + "%";
-      statScore.textContent = score;
-      statStreak.textContent = currentStreak;
-      statBestStreak.textContent = bestStreak;
-    }
-
-    function setFeedbackWaiting() {
-      feedbackStatus.innerHTML =
-        '<span class="icon">➖</span><span id="feedback-title">Waiting for your answer…</span>';
-      feedbackMessage.textContent =
-        "Type your answer for angle A, then press Enter or click Submit.";
-      stepsPanel.style.display = "none";
-      showStepsBtn.disabled = true;
-      showStepsBtn.dataset.open = "0";
-      awaitingNext = false;
-    }
-
-    function showCorrectFeedback(points, bonus) {
-      feedbackStatus.innerHTML =
-        '<span class="icon" style="color:' + varSuccess() + ';">✔</span><span id="feedback-title">Correct!</span>';
-      let msg = "Great job – A is correct.";
-      if (points || bonus) {
-        msg += " +" + points + " points" + (bonus ? " and +" + bonus + " streak bonus!" : "") + ".";
-      }
-      feedbackMessage.textContent = msg;
-      stepsPanel.style.display = "none";
-      showStepsBtn.disabled = false;
-      showStepsBtn.dataset.open = "0";
-      awaitingNext = true;
-    }
-
-    function showIncorrectFeedback(reason) {
-      feedbackStatus.innerHTML =
-        '<span class="icon" style="color:' + varError() + ';">✖</span><span id="feedback-title">Not quite yet…</span>';
-      feedbackMessage.textContent =
-        reason ||
-        "Remember: angles on a straight line add up to 180°.";
-      showStepsBtn.disabled = false;
-      showStepsBtn.dataset.open = "0";
-    }
-
-    function buildStepsExplanation(question) {
-      const lines = [];
-
-      if (question.type === "advanced") {
-        lines.push("1. Angles on a straight line add up to 180°.");
-        lines.push("2. The diagram shows two angles: A and " + question.k + "A.");
-        lines.push("3. Write an equation: A + " + question.k + "A = 180.");
-        lines.push("4. Combine like terms: " + (question.k + 1) + "A = 180.");
-        lines.push("5. Divide both sides by " + (question.k + 1) + ": A = 180 / " + (question.k + 1) + " = " + question.A + "°.");
-        lines.push("6. (Check) The other angle is " + (180 - question.A) + "°.");
-        return lines;
-      }
-
-      // Basic mode
-      const segs = question.segments;
-      const n = segs.length;
-      const known = [];
-      for (let i = 0; i < n; i++) {
-        if (i !== question.unknownIndex) known.push(segs[i]);
-      }
-      const knownSum = known.reduce((a, b) => a + b, 0);
-      const A = question.A;
-
-      lines.push("1. Angles on a straight line add up to 180°.");
-      const descriptionParts = segs.map((val, idx) => (idx === question.unknownIndex ? "A" : val + "°"));
-      lines.push("2. Along this straight line we have the angles: " + descriptionParts.join(", ") + ".");
-      if (known.length > 0) {
-        lines.push("3. Add the known angles: " + known.map(v => v + "°").join(" + ") + " = " + knownSum + "°.");
-      }
-      lines.push("4. Since the total is 180°, A = 180° - " + knownSum + "° = " + A + "°.");
-      return lines;
-    }
-
-    function renderSteps(question) {
-      const lines = buildStepsExplanation(question);
-      stepsPanel.innerHTML = lines.map(t => "<p>" + t + "</p>").join("");
-      stepsPanel.style.display = "block";
-    }
-
-    function addToIncorrectLog(question, userA) {
-      const item = document.createElement("div");
-      item.className = "summary-item";
-
-      if (question.type === "advanced") {
-        item.innerHTML =
-          "<strong>Q" + question.id + "</strong> (Advanced, shows A and " + question.k + "A)<br>" +
-          "Your answer: A = " + (userA === null || userA === undefined ? "" : userA) + "°. " +
-          "Correct: A = " + question.A + "°.";
-      } else {
-        item.innerHTML =
-          "<strong>Q" + question.id + "</strong> (Basic, segments: " + question.segments.length + ")<br>" +
-          "Your answer: A = " + (userA === null || userA === undefined ? "" : userA) + "°. " +
-          "Correct: A = " + question.A + "°.";
-      }
-
-      summaryPanel.appendChild(item);
-    }
-
-    function clearTimer() {
-      if (timerId !== null) {
-        clearInterval(timerId);
-        timerId = null;
-      }
-      timerDisplay.textContent = "";
-      timerDisplay.classList.remove("danger");
-    }
-
-    function startTimer() {
-      clearTimer();
-      if (!timerEnabled) return;
-      timerRemaining = parseInt(timerSelect.value, 10) || 60;
-      timerDisplay.textContent = timerRemaining + " s";
-      timerDisplay.classList.remove("danger");
-      timerId = setInterval(function () {
-        timerRemaining -= 1;
-        if (timerRemaining <= 0) {
-          clearTimer();
-          timerDisplay.textContent = "Time's up";
-          timerDisplay.classList.add("danger");
-          handleTimeUp();
-        } else {
-          timerDisplay.textContent = timerRemaining + " s";
-          if (timerRemaining <= 5) timerDisplay.classList.add("danger");
-        }
-      }, 1000);
-    }
-
-    function handleTimeUp() {
-      if (!currentQuestion || awaitingNext) return;
-      playWrongSound();
-      currentStreak = 0;
-      totalQuestions += 1;
-      updateStats();
-      showIncorrectFeedback("Time's up. You can still try again or show the steps.");
-    }
-
-    function setProblemTextForMode(mode, question) {
-      if (mode === "advanced") {
-        promptTextEl.textContent = "Find angle A.";
-        givenTextEl.textContent =
-          "Advanced: The larger angle is " + question.k + " times the smaller angle. (Angles on a straight line add up to 180°.)";
-      } else {
-        promptTextEl.textContent = "Find angle A.";
-        givenTextEl.textContent = "Angles on a straight line add up to 180°.";
-      }
-    }
-
-    function updateWorksheetInstruction() {
-      const mode = getMode();
-      if (mode === "advanced") {
-        worksheetInstruction.textContent =
-          "Instruction: Find angle A. (Advanced: the other angle is shown as kA. Use an equation and the fact the total is 180°.)";
-      } else {
-        worksheetInstruction.textContent =
-          "Instruction: Find the missing angle A. (Angles on a straight line add up to 180°.)";
-      }
-    }
-
-    function loadNewQuestion() {
-      const mode = getMode();
-      currentQuestion = generateQuestionByMode(mode);
-      awaitingNext = false;
-      resetInputs();
-      setInputsEnabled(true);
-
-      setProblemTextForMode(mode, currentQuestion);
-
-      diagramContainer.innerHTML = "";
-      diagramContainer.appendChild(createDiagramSVG(currentQuestion));
-
-      setFeedbackWaiting();
-      if (timerEnabled) startTimer();
-      else clearTimer();
-
-      inputA.focus();
-    }
-
-    function parseAngleInput(val) {
-      if (val === null || val === undefined) return null;
-      const trimmed = String(val).trim();
-      if (!trimmed) return null;
-      if (!/^-?\d+$/.test(trimmed)) return NaN;
-      return parseInt(trimmed, 10);
-    }
-
-    function handleSubmit() {
-      if (!currentQuestion) return;
-      if (awaitingNext) {
-        loadNewQuestion();
-        return;
-      }
-
-      const val = parseAngleInput(inputA.value);
-      if (val === null || isNaN(val)) {
-        showIncorrectFeedback("Please enter a whole-number degree for A (no decimals).");
-        playWrongSound();
-        return;
-      }
-
-      const correctA = currentQuestion.A;
-      if (val !== correctA) {
-        playWrongSound();
-        currentStreak = 0;
-        totalQuestions += 1;
-        updateStats();
-
-        if (currentQuestion.type === "advanced") {
-          showIncorrectFeedback(
-            "Not yet. Use an equation: A + " + currentQuestion.k + "A = 180."
-          );
-        } else {
-          showIncorrectFeedback(
-            "A is not correct yet. Add the given angles and subtract from 180°."
-          );
-        }
-
-        addToIncorrectLog(currentQuestion, val);
-        return;
-      }
-
-      playCorrectSound();
-      totalQuestions += 1;
-      correctQuestions += 1;
-      currentStreak += 1;
-      if (currentStreak > bestStreak) bestStreak = currentStreak;
-
-      let basePoints = 10;
-      let bonus = 0;
-      if (currentStreak > 0 && currentStreak % 5 === 0) bonus = 5;
-      score += basePoints + bonus;
-
-      updateStats();
-      showCorrectFeedback(basePoints, bonus);
-      setInputsEnabled(false);
-      clearTimer();
-    }
-
-    function handleNext() { loadNewQuestion(); }
-
-    function handleClear() {
-      resetInputs();
-      stepsPanel.style.display = "none";
-      showStepsBtn.dataset.open = "0";
-      setFeedbackWaiting();
-      if (!awaitingNext && timerEnabled) startTimer();
-      inputA.focus();
-    }
-
-    function handleShowSteps() {
-      if (!currentQuestion) return;
-      if (showStepsBtn.dataset.open === "1") {
-        stepsPanel.style.display = "none";
-        showStepsBtn.dataset.open = "0";
-      } else {
-        renderSteps(currentQuestion);
-        showStepsBtn.dataset.open = "1";
-      }
-    }
-
-    function createWorksheetQuestion(index, question) {
-      const wrapper = document.createElement("div");
-      wrapper.className = "worksheet-item";
-      wrapper.dataset.qid = question.id;
-
-      const header = document.createElement("div");
-      header.className = "worksheet-header";
-
-      if (question.type === "advanced") {
-        header.innerHTML =
-          "<span><strong>" + index + ".</strong> Find angle A.</span>" +
-          "<span>Advanced: A and " + question.k + "A add to 180°.</span>";
-      } else {
-        header.innerHTML =
-          "<span><strong>" + index + ".</strong> Find angle A.</span>" +
-          "<span>Angles on a straight line add up to 180°.</span>";
-      }
-
-      wrapper.appendChild(header);
-
-      const diagBox = document.createElement("div");
-      diagBox.className = "worksheet-diagram";
-      diagBox.appendChild(createDiagramSVG(question));
-      wrapper.appendChild(diagBox);
-
-      const inputsRow = document.createElement("div");
-      inputsRow.className = "worksheet-inputs";
-
-      const angleDiv = document.createElement("div");
-      angleDiv.className = "angle-input";
-      angleDiv.innerHTML =
-        "<span>A</span><input type='text' inputmode='numeric' size='3' aria-label='Worksheet angle A' /><span class='deg-symbol'>°</span>";
-      inputsRow.appendChild(angleDiv);
-      wrapper.appendChild(inputsRow);
-
-      const buttonsRow = document.createElement("div");
-      buttonsRow.className = "buttons-row";
-      const revealBtn = document.createElement("button");
-      revealBtn.textContent = "Reveal";
-      revealBtn.className = "secondary small";
-      buttonsRow.appendChild(revealBtn);
-      wrapper.appendChild(buttonsRow);
-
-      const answers = document.createElement("div");
-      answers.className = "worksheet-answers";
-
-      if (question.type === "advanced") {
-        answers.textContent =
-          "Answer: A = " + question.A + "°. Other angle = " + (180 - question.A) + "°.";
-      } else {
-        answers.textContent = "Answer: A = " + question.A + "°.";
-      }
-
-      wrapper.appendChild(answers);
-
-      revealBtn.addEventListener("click", function () {
-        answers.classList.toggle("visible");
-      });
-
-      wrapper._answersEl = answers;
-      return wrapper;
-    }
-
-    function generateWorksheet() {
-      updateWorksheetInstruction();
-      worksheetList.innerHTML = "";
-      const count = parseInt(worksheetCountSelect.value, 10) || 10;
-      const mode = getMode();
-      for (let i = 1; i <= count; i++) {
-        const q = generateQuestionByMode(mode);
-        const item = createWorksheetQuestion(i, q);
-        worksheetList.appendChild(item);
-      }
-    }
-
-    function revealAllWorksheet() {
-      const items = worksheetList.querySelectorAll(".worksheet-answers");
-      items.forEach(el => el.classList.add("visible"));
-    }
-
-    function hideAllWorksheet() {
-      const items = worksheetList.querySelectorAll(".worksheet-answers");
-      items.forEach(el => el.classList.remove("visible"));
-    }
-
-    function setActiveTab(tab) {
-      if (tab === "game") {
-        tabGame.classList.add("active");
-        tabWorksheet.classList.remove("active");
-        gameMode.style.display = "";
-        worksheetMode.style.display = "none";
-      } else {
-        tabGame.classList.remove("active");
-        tabWorksheet.classList.add("active");
-        gameMode.style.display = "none";
-        worksheetMode.style.display = "";
-      }
-    }
-
-    tabGame.addEventListener("click", function () { setActiveTab("game"); });
-    tabWorksheet.addEventListener("click", function () { setActiveTab("worksheet"); });
-
-    soundSwitch.addEventListener("click", function () {
-      soundOn = !soundOn;
-      soundSwitch.classList.toggle("on", soundOn);
-      if (soundOn) ensureAudio();
-    });
-
-    contrastSwitch.addEventListener("click", function () {
-      const on = !contrastSwitch.classList.contains("on");
-      contrastSwitch.classList.toggle("on", on);
-      if (on) document.body.classList.add("high-contrast");
-      else document.body.classList.remove("high-contrast");
-    });
-
-    timerSwitch.addEventListener("click", function () {
-      timerEnabled = !timerEnabled;
-      timerSwitch.classList.toggle("on", timerEnabled);
-      if (timerEnabled) startTimer();
-      else clearTimer();
-    });
-
-    timerSelect.addEventListener("change", function () {
-      if (timerEnabled) startTimer();
-    });
-
-    // Mode change: reload question and update worksheet instruction
-    modeSelect.addEventListener("change", function () {
-      updateWorksheetInstruction();
-      if (gameMode.style.display !== "none") {
-        loadNewQuestion();
-      } else {
-        // If in worksheet mode, don't auto-generate, just update instruction text
-        // (user can click Generate)
-        worksheetList.innerHTML = "";
-      }
-    });
-
-    submitBtn.addEventListener("click", handleSubmit);
-    nextBtn.addEventListener("click", handleNext);
-    clearBtn.addEventListener("click", handleClear);
-    showStepsBtn.addEventListener("click", handleShowSteps);
-
-    summaryToggle.addEventListener("click", function () {
-      summaryPanel.classList.toggle("visible");
-    });
-
-    window.addEventListener("keydown", function (e) {
-      if (document.activeElement && document.activeElement.tagName === "TEXTAREA") return;
-
-      if (e.key === "Enter") {
-        e.preventDefault();
-        if (gameMode.style.display !== "none") {
-          if (awaitingNext) handleNext();
-          else handleSubmit();
-        }
-      } else if (e.key === "Escape") {
-        if (gameMode.style.display !== "none") {
-          e.preventDefault();
-          handleClear();
-        }
-      }
-    });
-
-    worksheetGenerateBtn.addEventListener("click", generateWorksheet);
-    worksheetRevealAllBtn.addEventListener("click", revealAllWorksheet);
-    worksheetHideAllBtn.addEventListener("click", hideAllWorksheet);
-
-    updateWorksheetInstruction();
-    updateStats();
-    loadNewQuestion();
-  </script>
+<div class="wrap">
+<header>
+<div><h1>Angles on a Straight Line</h1><div class="subtitle">Find the missing angle A. Angles on a straight line add up to 180°.</div></div>
+<div class="tabs"><button id="practiceTab" class="active" type="button">Practice</button><button id="worksheetTab" type="button">Worksheet</button></div>
+</header>
+
+<section id="practiceCard" class="card">
+<div class="toolbar">
+<div><div class="label">Mode</div><div class="modes">
+<button class="mode active" data-mode="basic" type="button">Basic</button>
+<button class="mode" data-mode="advanced" type="button">Advanced</button>
+</div></div>
+<button id="newBtn" type="button">New Question</button>
+</div>
+<div id="diagram" class="diagram"></div>
+<div id="prompt" class="prompt">Find angle A.</div>
+<div id="given" class="given"></div>
+<div class="answer-row">
+<input id="answer" type="text" inputmode="numeric" autocomplete="off" placeholder="A">
+<span>°</span>
+<button id="checkBtn" class="primary" type="button">Check</button>
+<button id="nextBtn" type="button" disabled>Next</button>
+<button id="clearBtn" type="button">Clear</button>
+</div>
+<div id="feedback" class="feedback">Enter the whole-number measure of angle A.</div>
+<div id="steps" class="steps"></div>
+<div class="stats"><div class="stat">Correct: <span id="correct">0</span></div><div class="stat">Incorrect: <span id="incorrect">0</span></div></div>
+</section>
+
+<section id="worksheetCard" class="card worksheet">
+<div class="ws-top">
+<div><div style="font-size:19px;font-weight:900">Worksheet</div><div id="wsMeta" class="subtitle">Find the missing angle A.</div></div>
+<div class="row no-print">
+<label style="font-size:13px;font-weight:800">Questions <select id="wsCount"><option>5</option><option selected>10</option><option>15</option></select></label>
+<button id="wsGen" class="primary" type="button">Generate</button><button id="revealAll" type="button" disabled>Reveal All</button><button id="hideAll" type="button" disabled>Hide All</button><button id="printBtn" type="button" disabled>Print</button>
+</div></div>
+<div id="wsGrid" class="ws-grid"></div>
+</section>
+<div class="footer">Created by Mr. McLean Math.</div>
+</div>
+<script>
+let questionCounter=0;
+function randInt(min, max) {
+return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateStraightLineQuestionBasic() {
+const r = Math.random();
+let n;
+if (r < 0.4) n = 2;
+else if (r < 0.75) n = 3;
+else n = 4;
+
+const minSeg = 20;
+const total = 180;
+const remaining = total - n * minSeg;
+
+const cuts = [0];
+for (let i = 0; i < n - 1; i++) cuts.push(randInt(0, remaining));
+cuts.push(remaining);
+cuts.sort(function (a, b) { return a - b; });
+
+const segments = [];
+for (let i = 0; i < n; i++) {
+const bonus = cuts[i + 1] - cuts[i];
+segments.push(minSeg + bonus);
+}
+
+const unknownIndex = randInt(0, n - 1);
+const Avalue = segments[unknownIndex];
+
+const boundaries = [0];
+for (let i = 0; i < n; i++) boundaries.push(boundaries[i] + segments[i]);
+
+const knownValues = [];
+for (let i = 0; i < n; i++) if (i !== unknownIndex) knownValues.push(segments[i]);
+const knownSum = knownValues.reduce((a, b) => a + b, 0);
+
+return {
+type: "basic",
+id: ++questionCounter,
+segments,
+unknownIndex,
+A: Avalue,
+boundaries,
+knownValues,
+knownSum
+};
+}
+
+function generateStraightLineQuestionAdvanced() {
+// Choose k so that A = 180/(k+1) stays an integer:
+// k in {2,3,4,5} => k+1 in {3,4,5,6} divides 180
+const kOptions = [2, 3, 4, 5];
+const k = kOptions[randInt(0, kOptions.length - 1)];
+const Avalue = 180 / (k + 1);   // integer by design
+const other = 180 - Avalue;     // = k*Avalue
+
+// Decide whether A is on the left segment or right segment for variety
+const AOnLeft = Math.random() < 0.5;
+
+const segments = AOnLeft ? [Avalue, other] : [other, Avalue];
+const unknownIndex = AOnLeft ? 0 : 1;
+
+// boundaries for drawing (we still draw using true angles)
+const boundaries = [0, segments[0], 180];
+
+return {
+type: "advanced",
+id: ++questionCounter,
+k,
+AOnLeft,
+segments,
+unknownIndex,
+A: Avalue,
+boundaries
+};
+}
+
+function generateQuestionByMode(mode) {
+if (mode === "advanced") return generateStraightLineQuestionAdvanced();
+return generateStraightLineQuestionBasic();
+}
+
+function createDiagramSVG(question) {
+const size = 260;
+const cx = size / 2;
+const cy = size / 2 + 30;
+const lineLen = 110;
+const labelRadius = 70;
+
+const svgNS = "http://www.w3.org/2000/svg";
+const svg = document.createElementNS(svgNS, "svg");
+svg.setAttribute("viewBox", "0 0 " + size + " " + size);
+svg.setAttribute("role", "img");
+svg.setAttribute(
+"aria-label",
+"A straight line with angles on the top side, one labeled A."
+);
+
+function pointOnCircle(angleDeg, r) {
+const rad = (angleDeg * Math.PI) / 180;
+return { x: cx + r * Math.cos(rad), y: cy - r * Math.sin(rad) };
+}
+
+// Base horizontal line
+const left = pointOnCircle(180, lineLen);
+const right = pointOnCircle(0, lineLen);
+const baseLine = document.createElementNS(svgNS, "line");
+baseLine.setAttribute("x1", left.x);
+baseLine.setAttribute("y1", left.y);
+baseLine.setAttribute("x2", right.x);
+baseLine.setAttribute("y2", right.y);
+baseLine.setAttribute("stroke", "#ffffff");
+baseLine.setAttribute("stroke-width", "2.4");
+svg.appendChild(baseLine);
+
+const n = question.segments.length;
+const boundaries = question.boundaries;
+
+// Rays (internal boundaries only)
+for (let i = 1; i < n; i++) {
+const angleDeg = boundaries[i];
+const outer = pointOnCircle(angleDeg, lineLen);
+const ray = document.createElementNS(svgNS, "line");
+ray.setAttribute("x1", cx);
+ray.setAttribute("y1", cy);
+ray.setAttribute("x2", outer.x);
+ray.setAttribute("y2", outer.y);
+ray.setAttribute("stroke", "#ffffff");
+ray.setAttribute("stroke-width", "2.2");
+svg.appendChild(ray);
+}
+
+// Labels
+for (let i = 0; i < n; i++) {
+const startDeg = boundaries[i];
+const endDeg = boundaries[i + 1];
+const midDeg = (startDeg + endDeg) / 2;
+
+const labelPos = pointOnCircle(midDeg, labelRadius);
+const text = document.createElementNS(svgNS, "text");
+text.setAttribute("x", labelPos.x);
+text.setAttribute("y", labelPos.y);
+text.setAttribute("text-anchor", "middle");
+text.setAttribute("dominant-baseline", "middle");
+text.setAttribute("font-size", "13");
+text.setAttribute("font-weight", "600");
+
+if (question.type === "advanced") {
+// Show "A" on the unknown segment; show "kA" on the other.
+if (i === question.unknownIndex) {
+text.setAttribute("fill", "#ffffff");
+text.textContent = "A";
+} else {
+text.setAttribute("fill", "#ffcc80");
+text.textContent = question.k + "A";
+}
+} else {
+// Basic mode behavior
+if (i === question.unknownIndex) {
+text.setAttribute("fill", "#ffffff");
+text.textContent = "A";
+} else {
+text.setAttribute("fill", "#ffcc80");
+text.textContent = question.segments[i] + "°";
+}
+}
+
+svg.appendChild(text);
+}
+
+return svg;
+}
+
+function buildStepsExplanation(question) {
+const lines = [];
+
+if (question.type === "advanced") {
+lines.push("1. Angles on a straight line add up to 180°.");
+lines.push("2. The diagram shows two angles: A and " + question.k + "A.");
+lines.push("3. Write an equation: A + " + question.k + "A = 180.");
+lines.push("4. Combine like terms: " + (question.k + 1) + "A = 180.");
+lines.push("5. Divide both sides by " + (question.k + 1) + ": A = 180 / " + (question.k + 1) + " = " + question.A + "°.");
+lines.push("6. (Check) The other angle is " + (180 - question.A) + "°.");
+return lines;
+}
+
+// Basic mode
+const segs = question.segments;
+const n = segs.length;
+const known = [];
+for (let i = 0; i < n; i++) {
+if (i !== question.unknownIndex) known.push(segs[i]);
+}
+const knownSum = known.reduce((a, b) => a + b, 0);
+const A = question.A;
+
+lines.push("1. Angles on a straight line add up to 180°.");
+const descriptionParts = segs.map((val, idx) => (idx === question.unknownIndex ? "A" : val + "°"));
+lines.push("2. Along this straight line we have the angles: " + descriptionParts.join(", ") + ".");
+if (known.length > 0) {
+lines.push("3. Add the known angles: " + known.map(v => v + "°").join(" + ") + " = " + knownSum + "°.");
+}
+lines.push("4. Since the total is 180°, A = 180° - " + knownSum + "° = " + A + "°.");
+return lines;
+}
+
+let mode="basic",current=null,evaluated=false,correctCount=0,incorrectCount=0;
+
+function parseAngleInput(val){
+  if(val===null||val===undefined)return null;
+  const s=String(val).trim();
+  if(!s)return null;
+  if(!/^\d+$/.test(s))return null;
+  const n=Number(s);
+  return Number.isInteger(n)?n:null;
+}
+function render(){
+  current=generateQuestionByMode(mode);evaluated=false;
+  const d=document.getElementById("diagram");d.innerHTML="";d.appendChild(createDiagramSVG(current));
+  document.getElementById("given").textContent=mode==="advanced"
+    ?`The other angle is ${current.k}A.`
+    :"Angles on a straight line add up to 180°.";
+  const a=document.getElementById("answer");a.value="";a.disabled=false;a.focus();
+  document.getElementById("checkBtn").disabled=false;document.getElementById("nextBtn").disabled=true;
+  document.getElementById("feedback").className="feedback";document.getElementById("feedback").textContent="Enter the whole-number measure of angle A.";
+  document.getElementById("steps").className="steps";document.getElementById("steps").innerHTML="";
+}
+function check(){
+  if(evaluated)return;
+  const val=parseAngleInput(document.getElementById("answer").value);
+  if(val===null){
+    document.getElementById("feedback").className="feedback";
+    document.getElementById("feedback").textContent="Enter a valid whole-number angle.";
+    return;
+  }
+  evaluated=true;
+  document.getElementById("answer").disabled=true;
+  document.getElementById("checkBtn").disabled=true;
+  document.getElementById("nextBtn").disabled=false;
+  if(val===current.A){
+    correctCount++;document.getElementById("correct").textContent=correctCount;
+    document.getElementById("feedback").className="feedback ok";document.getElementById("feedback").textContent="Correct!";
+  }else{
+    incorrectCount++;document.getElementById("incorrect").textContent=incorrectCount;
+    document.getElementById("feedback").className="feedback bad";document.getElementById("feedback").textContent=`Incorrect. A = ${current.A}°.`;
+    const s=document.getElementById("steps");
+    s.innerHTML=buildStepsExplanation(current).map(x=>`<div>${x}</div>`).join("");
+    s.classList.add("show");
+  }
+}
+function clearAnswer(){
+  if(evaluated)return;
+  document.getElementById("answer").value="";
+  document.getElementById("answer").focus();
+}
+
+document.querySelectorAll(".mode").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".mode").forEach(x=>x.classList.remove("active"));b.classList.add("active");
+  mode=b.dataset.mode;render();
+}));
+document.getElementById("newBtn").addEventListener("click",render);
+document.getElementById("checkBtn").addEventListener("click",check);
+document.getElementById("nextBtn").addEventListener("click",render);
+document.getElementById("clearBtn").addEventListener("click",clearAnswer);
+document.getElementById("answer").addEventListener("keydown",e=>{
+  if(e.key==="Enter"){e.preventDefault();evaluated?render():check()}
+  else if(e.key==="Escape"){e.preventDefault();clearAnswer()}
+});
+
+function showPractice(){document.getElementById("practiceTab").classList.add("active");document.getElementById("worksheetTab").classList.remove("active");document.getElementById("practiceCard").style.display="block";document.getElementById("worksheetCard").style.display="none"}
+function showWorksheet(){document.getElementById("worksheetTab").classList.add("active");document.getElementById("practiceTab").classList.remove("active");document.getElementById("practiceCard").style.display="none";document.getElementById("worksheetCard").style.display="block"}
+document.getElementById("practiceTab").addEventListener("click",showPractice);document.getElementById("worksheetTab").addEventListener("click",showWorksheet);
+
+function wsItem(q,i){
+  const c=document.createElement("div");c.className="ws-item";
+  const t=document.createElement("div");t.className="ws-title";t.textContent=`${i}. Find angle A.`;
+  const d=document.createElement("div");d.className="ws-diagram";d.appendChild(createDiagramSVG(q));
+  const a=document.createElement("div");a.className="ws-answer";a.textContent=`Answer: A = ${q.A}°`;
+  const b=document.createElement("button");b.type="button";b.className="no-print";b.textContent="Reveal";b.addEventListener("click",()=>{a.classList.toggle("show");b.textContent=a.classList.contains("show")?"Hide":"Reveal"});
+  c.append(t,d,a,b);return c;
+}
+function generateWs(){
+  const n=Number(document.getElementById("wsCount").value),grid=document.getElementById("wsGrid");grid.innerHTML="";
+  for(let i=1;i<=n;i++)grid.appendChild(wsItem(generateQuestionByMode(mode),i));
+  document.getElementById("wsMeta").textContent=`${mode==="basic"?"Basic":"Advanced"} • ${n} questions`;
+  document.getElementById("revealAll").disabled=document.getElementById("hideAll").disabled=document.getElementById("printBtn").disabled=false;
+}
+document.getElementById("wsGen").addEventListener("click",generateWs);
+document.getElementById("revealAll").addEventListener("click",()=>document.querySelectorAll(".ws-answer").forEach(x=>x.classList.add("show")));
+document.getElementById("hideAll").addEventListener("click",()=>document.querySelectorAll(".ws-answer").forEach(x=>x.classList.remove("show")));
+document.getElementById("printBtn").addEventListener("click",()=>window.print());
+
+window.__MMM_TEST__={generateStraightLineQuestionBasic,generateStraightLineQuestionAdvanced,buildStepsExplanation};
+render();
+</script>
 </body>
 </html>
